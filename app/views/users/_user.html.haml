@@ -1,0 +1,9 @@
+%br/
+.row{:id => "user-#{user.id}"}
+  .col-lg-8
+    = render 'shared/avatar', user: user
+    %h5.name= link_to user.name, user
+  .col-lg-4
+    .follow
+      = render 'follows/form', user: user
+%br/

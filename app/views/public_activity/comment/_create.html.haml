@@ -1,0 +1,12 @@
+- if activity_resources_exist?(activity)
+  .activity{:id => "activity-#{activity.id}"}
+    .activity-comment
+      .info
+        = render 'shared/avatar', user: activity.owner
+        %h4.name= link_to activity.owner.name, user_path(activity.owner)
+        %span.action
+          commented on a #{link_to activity.trackable.commentable.class.to_s, activity.trackable.commentable}
+      .content
+        %h4
+          %small= activity.trackable.comment_html
+      = render 'shared/created_at', activity: activity

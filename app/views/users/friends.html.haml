@@ -1,0 +1,11 @@
+.row
+  .col-lg-3
+    = render 'shared/user_info'
+  .col-lg-6.well
+    %h3 Friends
+    %hr/
+    #friends
+      = render(@friends) || render('shared/no_resource', resources: 'Friends')
+    = render 'shared/paginate', resources: @friends
+  .col-lg-3
+    = render 'shared/links'

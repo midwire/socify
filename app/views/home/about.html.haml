@@ -1,0 +1,32 @@
+.row
+  .col-lg-6.col-lg-offset-3.well
+    %h3.text-center ABOUT
+    %hr/
+    %h3 What?
+    %p
+      Socify is a social networking app built using Ruby on Rails. It's free &amp; completely open source. You can check the source on
+      = succeed "." do
+        %a{:href => "https://github.com/sudharti/socify"}
+          = fa_icon 'github'
+          Github
+      = succeed "." do
+        %a{:href => "http://socifyapp.herokuapp.com/"} Heroku
+    %br/
+    %h3 Why?
+    %p
+      I am not building the next Facebook. Given that there are enough social networks already I don't want to end up launching one. Pointless! So why am I building? I want to try and learn how to develop a social network and in the process show you how easy it is done using Rails. Here is the
+      = succeed "." do
+        %a{:href => "https://medium.com/@sudharshanmuralidharaniyer/eb31da569233"}
+          = fa_icon 'medium'
+          Blog post
+    %br/
+    %h3 How?
+    %p
+      As stated above it's a Ruby on Rails application. Frontend is developed using Twitter Bootstrap. Database is SQLite for development and Postgresql for production.
+    %br/
+    %a.btn.btn-warning{:href => "https://github.com/sudharti/socify"}
+      = fa_icon 'star'
+      Star it
+    %a.btn.btn-primary{:href => "https://github.com/sudharti/socify"}
+      = fa_icon 'code-fork'
+      Fork it

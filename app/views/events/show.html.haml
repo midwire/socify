@@ -1,0 +1,13 @@
+- if @event.user
+  .event{:id => "event-#{@event.id}"}
+    .row
+      .col-lg-6.col-lg-offset-3.well
+        = render @event, remote: false
+    .row
+      .col-lg-6.col-lg-offset-3.well
+        %h4 Comments
+        %hr/
+        = render 'comments/form', commentable: @event
+        %br/
+        .comments
+          = render(@comments) || render('shared/no_resource', resources: 'Comments')

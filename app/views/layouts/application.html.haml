@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Socify
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+  %body
+    = render 'shared/navbar'
+    - unless notice.blank?
+      .alert.alert-info.alert-dismissable.alert-fixed
+        = notice
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+    - unless alert.blank?
+      .alert.alert-danger.alert-dismissable.alert-fixed
+        = alert
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+    .container
+      = yield

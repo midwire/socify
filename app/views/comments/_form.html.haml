@@ -1,0 +1,6 @@
+#mentionable-data{"data-content" => "#{mentionable_user_path(current_user)}"}
+= form_tag comments_path(commentable_type: commentable.class.to_s, commentable_id: commentable.id), id: 'new_comment', method: :post, remote: true do
+  .form-group
+    #comment-text.editable.form-control.input-mentionable{:contenteditable => "true", :placeholder => "Enter Comment"}
+    = hidden_field_tag :comment_text, nil, placeholder: 'Enter Comment', class: 'form-control input-mentionable'
+  = submit_tag :comment, class: 'btn btn-primary'

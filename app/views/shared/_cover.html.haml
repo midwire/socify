@@ -1,0 +1,4 @@
+- if user.cover.url
+  .cover{:style => "background-image: url(#{user.cover.url});"}
+- else
+  .cover{:style => "background-image: url(/assets/cover.png);"}

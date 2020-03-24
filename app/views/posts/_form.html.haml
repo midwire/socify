@@ -1,0 +1,18 @@
+.well
+  #mentionable-data{"data-content" => "#{mentionable_user_path(current_user)}"}
+  = form_for @post, html: { class: 'post_form' } do |f|
+    .form-group
+      %h4 Update Status
+      #post-content.editable.form-control.input-mentionable{:contenteditable => "true", :placeholder => "What's up?"}
+      = f.hidden_field :content, value: @post.content, class: 'form-control input-mentionable', autofocus: true
+    #img-preview.form-group.hidden
+      %img{:alt => "Preview", :src => ""}/
+    .form-group.hidden
+      = f.file_field :attachment
+    .form-group
+      %a#post-attachment.pull-right.btn.btn-primary{:href => "javascript:void(0);"}
+        = fa_icon 'image'
+      = f.submit 'Post', class: 'btn btn-primary'
+    - if @post.attachment.present?
+      .attachment
+        = image_tag @post.attachment

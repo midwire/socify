@@ -1,0 +1,11 @@
+- if activity_resources_exist?(activity) && activity.trackable.followable
+  .activity{:id => "activity-#{activity.id}"}
+    .activity-follow
+      .follower
+        = render 'shared/avatar', user: activity.owner
+        %h4.name= link_to activity.owner.name, user_path(activity.owner)
+        %span.action Followed
+      .followee
+        = render 'shared/avatar', user: activity.trackable.followable
+        %h4.name= link_to activity.trackable.followable.name, user_path(activity.trackable.followable)
+      = render 'shared/created_at', activity: activity

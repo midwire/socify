@@ -1,0 +1,22 @@
+- if post.user
+  .info
+    = render 'shared/avatar', user: post.user
+    %h4.name= link_to post.user.name, user_path(post.user)
+    %span.action
+      created a #{link_to 'post', post}
+  .content
+    %span.text= post.content_html
+    - if post.attachment.present?
+      .attachment
+        = image_tag post.attachment.url
+    = render 'shared/created_at', activity: post
+    .points
+      %span.like-count= pluralize(post.cached_votes_up, 'like')
+      %span.comments-count= pluralize(post.comments_count, 'comment')
+      .pull-right
+        - if belongs_to_user?(post)
+          = link_to edit_post_path(post), class: 'btn btn-primary btn-sm' do
+            - fa_icon 'pencil'
+          = link_to post_path(post), method: :delete, class:'btn btn-danger btn-sm', remote: remote do
+            - fa_icon 'trash'
+  = render 'shared/actions', resource: post

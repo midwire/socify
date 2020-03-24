@@ -1,0 +1,12 @@
+- if activity_resources_exist?(activity)
+  .activity{:id => "activity-#{activity.id}"}
+    .activity-like
+      .info
+        = render 'shared/avatar', user: activity.owner
+        %h4.name= link_to activity.owner.name, user_path(activity.owner)
+        %span.action
+          liked a #{link_to 'post', activity.trackable}
+      .content
+        %h4
+          %small= activity.trackable.content_html
+      = render 'shared/created_at', activity: activity

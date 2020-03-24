@@ -1,0 +1,31 @@
+#user-info.well
+  .text-center
+    = render 'shared/avatar', user: @user
+    %br/
+    %h5= link_to @user.name, @user
+  %h5
+    = fa_icon 'shield'
+    = pluralize(@user.posts_count, 'post')
+  - if @user.dob.present?
+    %h5
+      = fa_icon @user.sex
+      = "#{pluralize(age(@user.dob), 'year')} old"
+  - if @user.location.present?
+    %h5
+      = fa_icon 'map-marker'
+      = @user.location
+  %h5
+    %i.icon-record
+    = pluralize(@user.points, 'point')
+  - if @user.badges.empty?
+    %h5 No badge yet.
+  - else
+    %h5
+      - @user.badges.each do |badge|
+        %i{:class => "#{badge.custom_fields[:icon]}", :style => "color: #{badge.custom_fields[:color]}"}
+        = badge.name
+  %br/
+  .text-center
+    - unless is_current_user?(@user)
+      = render 'follows/form', user: @user
+      %h6= 'Follows you' if current_user.followed_by?(@user)

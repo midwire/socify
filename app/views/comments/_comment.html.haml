@@ -1,0 +1,14 @@
+- if comment.user
+  %div{:id => "comment-#{comment.id}"}
+    .info
+      = render 'shared/avatar', user: comment.user
+      %h4.name= link_to comment.user.name, user_path(comment.user)
+    .content
+      .row
+        %span.text= comment.comment_html
+      .pull-right
+        - if belongs_to_user?(comment)
+          = link_to comment_path(comment), method: :delete, class: 'btn btn-danger btn-sm', remote: true do
+            - fa_icon 'trash'
+    %br/
+    %hr/

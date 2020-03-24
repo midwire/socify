@@ -1,0 +1,26 @@
+.row
+  .col-lg-4.col-lg-offset-4.well
+    %h3.text-center Change your password
+    %br/
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      - if resource.errors.any?
+        .alert.alert-danger.alert-dismissable
+          = resource.errors.full_messages.first
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+      = f.hidden_field :reset_password_token
+      .form-group
+        = f.label :password, "New password"
+        %br/
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} characters minimum)
+        %br/
+        = f.password_field :password, autofocus: true, autocomplete: 'off', class: 'form-control', placeholder: 'Password'
+      .form-group
+        = f.label :password_confirmation, 'Confirm new password'
+        %br/
+        = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control', placeholder: 'Repeat password'
+      .actions
+        = f.submit 'Change Password', class: 'btn btn-primary'
+    %br/
+    = render "devise/shared/links"

@@ -1,19 +1,31 @@
 source 'https://rubygems.org'
-ruby '~> 2.3.1'
+ruby Bundler.root.join('.ruby-version').read.strip
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.2'
+gem 'rails', '~> 5.2.4.2'
+# Use ActiveModel has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'active_model_serializers'
+gem 'acts_as_commentable'
+gem 'acts_as_follower'
+gem 'acts_as_votable', '~> 0.10.0'
+gem 'auto_html', '~>1.6.4'
+gem 'carrierwave'
+gem 'counter_culture', '~> 0.1.33'
+gem 'devise', '~> 4.7' # Authentication
+gem 'friendly_id', '~> 5.0'
+gem 'haml-rails', '~> 2.0' # Use HAML for HTML templates
+gem 'jquery-atwho-rails' # Used to implement at.js auto complete mentions/emojis
+gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'merit'
-# Used to implement at.js for auto complete mentions/emojis
-gem 'jquery-atwho-rails'
+gem 'populator'
+gem 'public_activity'
+gem 'puma', '~> 4.3' # Puma for appserver
+gem 'sanitize'
+gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
+gem 'uglifier', '>= 1.3' # Use Uglifier as compressor for JavaScript assets
+gem 'will_paginate', '~> 3.1.0'
 
 # Use twitter bootstrap sass
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -21,54 +33,22 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
 
 group :development do
-  gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'capistrano-rails' # for deployment
+  gem 'faker'
   gem 'letter_opener'
   gem 'guard'
   gem 'guard-rspec', '~> 4.2.8'
 end
 
 group :development, :test do
-  gem 'puma'
   gem 'sqlite3'
+  gem 'pry'
 end
 
 group :production do
   gem 'pg'
-  gem 'unicorn'
-  gem 'rails_12factor'
   gem 'fog'
   gem 'fog-aws'
 end
-
-gem 'devise'
-gem 'carrierwave'
-gem 'friendly_id', '~> 5.0'
-
-gem 'will_paginate', '~> 3.1.0'
-gem 'public_activity'
-
-gem 'acts_as_votable', '~> 0.10.0'
-gem 'acts_as_commentable'
-gem 'acts_as_follower'
-gem 'counter_culture', '~> 0.1.33'
-
-gem 'faker'
-gem 'populator'
-gem 'auto_html', '~>1.6.4'
-gem 'sanitize'
-
-gem 'active_model_serializers'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]

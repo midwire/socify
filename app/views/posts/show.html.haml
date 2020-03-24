@@ -1,0 +1,13 @@
+- if @post.user
+  .post{:id => "post-#{@post.id}"}
+    .row
+      .col-lg-6.col-lg-offset-3.well
+        = render @post, remote: false
+    .row
+      .col-lg-6.col-lg-offset-3.well
+        %h4 Comments
+        %hr/
+        = render 'comments/form', commentable: @post
+        %br/
+        .comments
+          = render(@comments) || render('shared/no_resource', resources: 'Comments')

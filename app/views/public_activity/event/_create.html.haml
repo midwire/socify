@@ -1,0 +1,4 @@
+- if activity_resources_exist?(activity)
+  .activity{:id => "activity-#{activity.id}"}
+    .activity-event{:id => "event-#{activity.trackable.id}"}
+      = render activity.trackable, remote: true

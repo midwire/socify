@@ -1,0 +1,30 @@
+.row
+  #newsfeed.col-lg-6
+    %h4
+      = fa_icon "newspaper-o"
+      NEWSFEED
+    #activities
+      - if @activities.empty?
+        .well
+          = render('shared/no_resource', resources: 'Activities')
+      - else
+        = render_activities(@activities, layout: '/shared/activity')
+    = render 'shared/paginate', resources: @activities
+  #intro.col-lg-6
+    %h1 Socify
+    %p
+      Socify is an open source social networking app written using #{fa_icon 'diamond'} Ruby on Rails. You can checkout the blog
+      %a{:href => "https://medium.com/@sudharshanmuralidharaniyer/eb31da569233"} post
+      on how
+      it was developed and also the source code on
+      = succeed "." do
+        %a{:href => "https://github.com/sudharti/socify"}
+          = fa_icon 'github'
+          Github
+    %hr/
+    %a.btn.btn-warning{:href => "https://github.com/sudharti/socify"}
+      = fa_icon 'star'
+      Star it
+    %a.btn.btn-primary{:href => "https://github.com/sudharti/socify"}
+      = fa_icon 'code-fork'
+      Fork it

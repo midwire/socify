@@ -1,0 +1,17 @@
+- if activity_resources_exist?(activity)
+  .activity{:id => "activity-#{activity.id}"}
+    - if activity.trackable
+      .activity-like
+        .info
+          = render 'shared/avatar', user: activity.owner
+          %h4.name= link_to activity.owner.name, user_path(activity.owner)
+          %span.action
+            liked a #{link_to 'event', activity.trackable}
+        .content
+          %h4
+            %small= activity.trackable.name
+          %h4
+            %small
+              = fa_icon'calendar'
+              = formatted_time(activity.trackable.event_datetime)
+        = render 'shared/created_at', activity: activity

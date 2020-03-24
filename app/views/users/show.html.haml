@@ -1,0 +1,22 @@
+= render 'shared/cover', user: @user
+%br/
+.row{:id => "user-#{@user.id}"}
+  .col-lg-3
+    = render 'shared/user_info'
+  .col-lg-6
+    #activities
+      - if @activities.empty?
+        .well
+          = render('shared/no_resource', resources: 'Activities')
+      - else
+        = render_activities(@activities, layout: '/shared/activity')
+    = render 'shared/paginate', resources: @activities
+  .col-lg-3
+    - if is_current_user?(@user)
+      .well
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to 'Edit Profile', edit_user_path(@user)
+          %li= link_to 'Change password', edit_user_registration_path
+          %li= link_to 'Friends', friends_user_path(@user)
+          %li= link_to 'Followers', followers_user_path(@user)
+          %li= link_to 'Deactivate', deactivate_user_path(@user)

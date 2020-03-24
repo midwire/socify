@@ -1,0 +1,15 @@
+.row
+  .col-lg-3
+    = render 'shared/user_info'
+  #newsfeed.col-lg-6
+    = render 'posts/form'
+    %br/
+    #activities
+      - if @activities.empty?
+        .well
+          = render('shared/no_resource', resources: 'Activities')
+      - else
+        = render_activities(@activities, layout: '/shared/activity')
+    = render 'shared/paginate', resources: @activities
+  .col-lg-3
+    = render 'shared/links'
